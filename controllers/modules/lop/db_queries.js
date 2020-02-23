@@ -37,7 +37,7 @@ module.exports.deleteLop = function (l_ma, callback) {
 
 
 module.exports.getLopInfo = function (l_ma , callback) {
-    pool.query('SELECT * FROM lop WHERE l_xoa=0 and l_ma=$1', [l_ma], (error, results) => {
+    pool.query('SELECT * FROM lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE bmcn.bmcn_xoa=0 and k.k_xoa=0 and l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and l_xoa=0 and l_ma=$1', [l_ma], (error, results) => {
         callback(error, results.rows);
     });
 };

@@ -37,7 +37,7 @@ module.exports.deleteBoMonChuyenNganh = function (bmcn_ma, callback) {
 
 
 module.exports.getBoMonChuyenNganhInfo = function (bmcn_ma , callback) {
-    pool.query('SELECT * FROM bomon_chuyennganh WHERE bmcn_xoa=0 and bmcn_ma=$1', [bmcn_ma], (error, results) => {
+    pool.query('SELECT * FROM bomon_chuyennganh as bmcn, khoa as k WHERE bmcn.k_ma=k.k_ma and k.k_xoa=0 and bmcn.bmcn_xoa=0 and bmcn.bmcn_ma=$1', [bmcn_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
