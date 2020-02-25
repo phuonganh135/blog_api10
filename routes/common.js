@@ -29,6 +29,7 @@ router.route('/api')
 /* KHOA ROUTES */
 router.route('/api/dangnhap')
     .get(khoaController.getKhoaList)
+	
 
 router.route('/api/khoa')
     .post(khoaController.createKhoa)
@@ -47,6 +48,7 @@ router.route('/api/hocki')
 
 router.route('/api/thoigian')
     .get(thoigianController.getThoiGianList)
+	.post(thoigianController.createThoiGian)
 
 router.route('/api/bomon_chuyennganh')
     .post(bomon_chuyennganhController.createBoMonChuyenNganh)

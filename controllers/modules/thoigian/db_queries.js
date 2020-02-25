@@ -9,3 +9,11 @@ module.exports.getThoiGianList = function (nh_ma, hk_ma, k_ma, callback) {
         callback(error, results.rows);
     });
 };
+
+module.exports.createThoiGian = function (thoigianInfo, callback) {
+    const { tg_batdau, tg_ketthuc,  nh_ma, hk_ma , k_ma , ltg_ma , tg_xoa   } = thoigianInfo;
+
+    pool.query('INSERT INTO thoigian_dk_bc (tg_batdau, tg_ketthuc, nh_ma, hk_ma , k_ma , ltg_ma , tg_xoa) VALUES ($1, $2, $3, $4, $5, $6, $7)', [tg_batdau, tg_ketthuc, nh_ma, hk_ma , k_ma , ltg_ma , tg_xoa], (error, result) => {
+        callback(error, result);
+    });
+};

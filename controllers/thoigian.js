@@ -14,3 +14,17 @@ module.exports.getThoiGianList = function (req, res, next) {
         res.status(200).json(results);
     });
 };
+
+
+module.exports.createThoiGian = function (req, res, next) {
+    var thoigianInfo = req.body;
+    dbQuries.createThoiGian(thoigianInfo, function(error, result) {
+        if (error) {
+            res.status(501).json({
+                message: "Error create new thoigian!",
+                error: error
+            });
+        }
+        res.status(201).send("Thoigian is added successfully!");
+    });
+};
