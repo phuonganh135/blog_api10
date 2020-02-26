@@ -49,6 +49,11 @@ router.route('/api/hocki')
 router.route('/api/thoigian')
     .get(thoigianController.getThoiGianList)
 	.post(thoigianController.createThoiGian)
+	.put(thoigianController.updateThoiGianInfo)
+	.delete(thoigianController.deleteThoiGian)
+	
+router.route('/api/thoigian_info')
+	.get(thoigianController.getThoiGianInfo)
 
 router.route('/api/bomon_chuyennganh')
     .post(bomon_chuyennganhController.createBoMonChuyenNganh)
