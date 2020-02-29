@@ -17,6 +17,7 @@ var hockiController = require('../controllers/hocki');
 var thoigianController = require('../controllers/thoigian');
 var binhluanController = require('../controllers/binhluan');
 var thongbaodtController = require('../controllers/thongbao_detai');
+var databaseController = require('../controllers/database_query');
 
 
 
@@ -29,6 +30,10 @@ router.route('/api')
 /* KHOA ROUTES */
 router.route('/api/dangnhap')
     .get(khoaController.getKhoaList)
+	
+router.route('/api/database_query')
+    .get(databaseController.getDatabaseQuery)
+	.put(databaseController.updateDatabaseQuery)
 	
 
 router.route('/api/khoa')
@@ -107,6 +112,11 @@ router.route('/api/sinhvien_info')
 router.route('/api/giangvien_huongdan')
     .post(gvhuongdanController.createGiangVienHuongDan)
     .get(gvhuongdanController.getGiangVienHuongDanList)
+	.put(gvhuongdanController.updateGiangVienHuongDanInfo)
+	.delete(gvhuongdanController.deleteGiangVienHuongDan)
+	
+router.route('/api/giangvien_huongdan_info')
+	.get(gvhuongdanController.getGiangVienHuongDanInfo)
 
 router.route('/api/detai')
     .post(detaiController.createDeTai)

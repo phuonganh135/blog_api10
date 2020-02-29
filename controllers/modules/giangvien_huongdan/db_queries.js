@@ -11,8 +11,30 @@ module.exports.createGiangVienHuongDan = function (gvhuongdanInfo, callback) {
     });
 };
 
-module.exports.getGiangVienHuongDanList = function (callback) {
-    pool.query('SELECT * FROM gianvien_huongdan as gvhd, hocki as hk, gianvien as gv WHERE gvhd.gv_ma = gv.gv_ma and gvhd.hk_ma = hk.hk_ma', (error, results) => {
+module.exports.getGiangVienHuongDanList = function (bmcn_ma , nh_ma,hk_ma,callback) {
+    pool.query('SELECT * FROM gianvien_huongdan as gvhd, gianvien as gv WHERE gvhd.gv_ma = gv.gv_ma and gvhd.gvhd_xoa=0 and gv.gv_xoa=0 and gvhd.hk_ma=$3 and gvhd.nh_ma=$2 and gv.bmcn_ma=$1  ',[bmcn_ma , nh_ma,hk_ma], (error, results) => {
         callback(error, results.rows);
+    });
+};
+
+
+module.exports.getGiangVienHuongDanInfo = function (gv_ma, nh_ma, hk_ma, callback) {
+    pool.query('SELECT * FROM gianvien_huongdan as gvhd, gianvien as gv WHERE gvhd.gv_ma = gv.gv_ma and gvhd.gvhd_xoa=0 and gv.gv_xoa=0 and gvhd.hk_ma=$3 and gvhd.nh_ma=$2 and gvhd.gv_ma=$1', [gv_ma, nh_ma, hk_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+module.exports.updateGiangVienHuongDanInfo = function (gv_ma, nh_ma,hk_ma,  gvhuongdanInfo, callback) {
+    const { gvhd_soluong } = gvhuongdanInfo;
+
+    pool.query('UPDATE gianvien_huongdan set gvhd_soluong=$4 WHERE gv_ma=$1 and nh_ma=$2 and hk_ma=$3 ', [gv_ma, nh_ma,hk_ma,gvhd_soluong], (error, result) => {
+        callback(error, result);
+    });
+};
+
+module.exports.deleteGiangVienHuongDan = function (gv_ma, nh_ma,hk_ma, callback) {
+    pool.query('UPDATE gianvien_huongdan set gvhd_xoa=1 WHERE gv_ma=$1 and nh_ma=$2 and hk_ma=$3', [gv_ma, nh_ma,hk_ma], (error, result) => {
+        callback(error, result);
     });
 };
