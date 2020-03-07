@@ -97,6 +97,19 @@ module.exports.getSinhVienThucHienList = function (req, res, next) {
     });
 };
 
+module.exports.getSinhVienThucHienLVSvDeXuatList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienThucHienLVSvDeXuatList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thuchien LV Sv de xuat list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 module.exports.updateSinhVienDangKiAccept = function (req, res, next) {
     var dt_ma = req.query.dt_ma;
