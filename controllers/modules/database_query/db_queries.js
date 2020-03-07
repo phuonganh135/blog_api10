@@ -4,7 +4,7 @@ var dbConfig = require('../../db_config.json');
 const pool = new Pool(dbConfig);
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM detai', (error, results) => {
+    pool.query('SELECT * FROM sinhvien_dk_detai', (error, results) => {
         callback(error, results.rows);
     }); 
 };

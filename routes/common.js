@@ -105,8 +105,11 @@ router.route('/api/sinhvien_dangki')
 router.route('/api/sinhvien_thuchien')
     .get(sinhvienController.getSinhVienThucHienList)
 	
-router.route('/api/sinhvien_thuchien_lv_svdx')
-    .get(sinhvienController.getSinhVienThucHienLVSvDeXuatList)
+router.route('/api/sinhvien_thuchien_nienluan')
+    .get(sinhvienController.getSinhVienThucHienNienLuanList)
+	
+router.route('/api/sinhvien_thuchien_nienluan_coso')
+    .get(sinhvienController.getSinhVienThucHienNienLuanCoSoList)
 
 router.route('/api/sinhvien_info')
     .get(sinhvienController.getSinhVienInfo)
