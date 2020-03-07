@@ -124,6 +124,9 @@ router.route('/api/giangvien_huongdan_info')
 router.route('/api/detai')
     .post(detaiController.createDeTai)
     .get(detaiController.getDeTaiList)
+	
+router.route('/api/detai_luanvan_svdx')
+	.get(detaiController.getDeTaiLuanVanSVDXList)
 
 router.route('/api/detai_sinhvien')
     .get(detaiController.getDeTaiListOfAllGianVien)

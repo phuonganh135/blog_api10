@@ -27,6 +27,19 @@ module.exports.getDeTaiList = function (req, res, next) {
     });
 };
 
+module.exports.getDeTaiLuanVanSVDXList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getDeTaiLuanVanSVDXList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai luanvan sinhvien dexuat list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 module.exports.getDeTaiInfo = function (req, res, next) {
     var dt_ma = req.query.dt_ma;
