@@ -27,6 +27,21 @@ module.exports.getDeTaiList = function (req, res, next) {
     });
 };
 
+
+module.exports.getDeTaiAndSinhVienInfo = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+	var dt_ma = req.query.dt_ma;
+    dbQuries.getDeTaiAndSinhVienInfo(sv_ma,dt_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai and sinhvien info !",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getDeTaiLuanVanSVDXList = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
     dbQuries.getDeTaiLuanVanSVDXList(gv_ma, function(error, results) {

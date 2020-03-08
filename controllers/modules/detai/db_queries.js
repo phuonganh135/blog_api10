@@ -61,6 +61,12 @@ module.exports.getDeTaiInfo = function (dt_ma, callback) {
 };
 
 
+module.exports.getDeTaiAndSinhVienInfo = function (sv_ma, dt_ma, callback) {
+    pool.query('SELECT * FROM detai as dt , sinhvien_dk_detai as svdkdt , sinhvien as sv , trangthai_dangki as ttdk WHERE svdkdt.sv_ma = sv.sv_ma and svdkdt.dt_ma = dt.dt_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma=$1 and dt.dt_ma = $2 and dt.dt_xoa = 0 and sv.sv_xoa=0 and svdkdt.svdkdt_xoa=0 and ttdk.ttdk_xoa=0 and svdkdt.ttdk_ma=\'cn\'', [sv_ma, dt_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
 module.exports.updateDeTai = function (dt_ma, detaiInfo, callback) {
     const { dt_ten, dt_mieuta, dt_soluong  } = detaiInfo;
 
