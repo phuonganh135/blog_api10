@@ -128,11 +128,23 @@ router.route('/api/detai')
     .post(detaiController.createDeTai)
     .get(detaiController.getDeTaiList)
 	
+router.route('/api/detai_nienluan')
+    .get(detaiController.getDeTaiNienLuanList)
+	
+router.route('/api/detai_nienluancoso')
+    .get(detaiController.getDeTaiNienLuanCoSoList)
+	
 router.route('/api/detai_and_sv_info')
     .get(detaiController.getDeTaiAndSinhVienInfo)
 	
 router.route('/api/detai_luanvan_svdx')
 	.get(detaiController.getDeTaiLuanVanSVDXList)
+	
+router.route('/api/detai_nienluan_svdx')
+	.get(detaiController.getDeTaiNienLuanSVDXList)
+	
+router.route('/api/detai_nienluancoso_svdx')
+	.get(detaiController.getDeTaiNienLuanCoSoSVDXList)
 
 router.route('/api/detai_sinhvien')
     .get(detaiController.getDeTaiListOfAllGianVien)
