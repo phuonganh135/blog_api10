@@ -52,6 +52,20 @@ module.exports.getDeTaiNienLuanList = function (gv_ma, callback) {
     });
 };
 
+module.exports.getDeTaiTieuLuanList = function (gv_ma, callback) {
+    pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'dtgv\' and ldt_ma=\'tl\'',[gv_ma], async function (error, results) {
+        var listDeTai = results.rows;
+        // var listResult = results.rows;
+        for (var i = 0; i < listDeTai.length; i++) {
+            var deTai = listDeTai[i];
+            var dt_ma = deTai.dt_ma;
+            deTai.svdk = await getSinhVienDangKy(dt_ma);
+            listDeTai[i] = deTai;
+        }
+        callback(error, listDeTai);
+    });
+};
+
 
 module.exports.getDeTaiNienLuanCoSoList = function (gv_ma, callback) {
     pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'dtgv\' and ldt_ma=\'nlcs\'',[gv_ma], async function (error, results) {
@@ -95,6 +109,19 @@ module.exports.getDeTaiNienLuanSVDXList = function (gv_ma, callback) {
     });
 };
 
+module.exports.getDeTaiTieuLuanSVDXList = function (gv_ma, callback) {
+    pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'svdx\' and ldt_ma=\'tl\'',[gv_ma], async function (error, results) {
+        var listDeTai = results.rows;
+        // var listResult = results.rows;
+        for (var i = 0; i < listDeTai.length; i++) {
+            var deTai = listDeTai[i];
+            var dt_ma = deTai.dt_ma;
+            deTai.svdk = await getSinhVienDangKy(dt_ma);
+            listDeTai[i] = deTai;
+        }
+        callback(error, listDeTai);
+    });
+};
 
 module.exports.getDeTaiNienLuanCoSoSVDXList = function (gv_ma, callback) {
     pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'svdx\' and ldt_ma=\'nlcs\'',[gv_ma], async function (error, results) {
@@ -113,7 +140,7 @@ module.exports.getDeTaiNienLuanCoSoSVDXList = function (gv_ma, callback) {
 
 
 module.exports.getDeTaiInfo = function (dt_ma, callback) {
-    pool.query('SELECT * FROM detai WHERE dt_ma = $1 and dt_xoa = 0', [dt_ma], (error, results) => {
+    pool.query('SELECT * FROM detai as dt , loai_detai as ldt WHERE ldt.ldt_ma = dt.ldt_ma and ldt.ldt_xoa=0 and dt.dt_ma = $1 and dt.dt_xoa = 0', [dt_ma], (error, results) => {
         callback(error, results.rows);
     });
 };

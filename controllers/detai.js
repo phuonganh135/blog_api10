@@ -41,6 +41,21 @@ module.exports.getDeTaiNienLuanList = function (req, res, next) {
     });
 };
 
+
+module.exports.getDeTaiTieuLuanList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getDeTaiTieuLuanList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai tieuluan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
 module.exports.getDeTaiNienLuanCoSoList = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
     dbQuries.getDeTaiNienLuanCoSoList(gv_ma, function(error, results) {
@@ -89,6 +104,20 @@ module.exports.getDeTaiNienLuanSVDXList = function (req, res, next) {
         if (error) {
             res.status(501).json({
                 message: "Error get detai luanvan sinhvien dexuat list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiTieuLuanSVDXList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getDeTaiTieuLuanSVDXList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai tieuvan sinhvien dexuat list!",
                 error: error
             });
         }

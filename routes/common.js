@@ -34,6 +34,7 @@ router.route('/api/dangnhap')
 router.route('/api/database_query')
     .get(databaseController.getDatabaseQuery)
 	.put(databaseController.updateDatabaseQuery)
+	.post(databaseController.craeteDatabaseQuery)
 	
 
 router.route('/api/khoa')
@@ -108,6 +109,9 @@ router.route('/api/sinhvien_thuchien')
 router.route('/api/sinhvien_thuchien_nienluan')
     .get(sinhvienController.getSinhVienThucHienNienLuanList)
 	
+router.route('/api/sinhvien_thuchien_tieuluan')
+    .get(sinhvienController.getSinhVienThucHienTieuLuanList)
+	
 router.route('/api/sinhvien_thuchien_nienluan_coso')
     .get(sinhvienController.getSinhVienThucHienNienLuanCoSoList)
 
@@ -131,6 +135,9 @@ router.route('/api/detai')
 router.route('/api/detai_nienluan')
     .get(detaiController.getDeTaiNienLuanList)
 	
+router.route('/api/detai_tieuluan')
+    .get(detaiController.getDeTaiTieuLuanList)
+	
 router.route('/api/detai_nienluancoso')
     .get(detaiController.getDeTaiNienLuanCoSoList)
 	
@@ -142,6 +149,10 @@ router.route('/api/detai_luanvan_svdx')
 	
 router.route('/api/detai_nienluan_svdx')
 	.get(detaiController.getDeTaiNienLuanSVDXList)
+	
+	
+router.route('/api/detai_tieuluan_svdx')
+	.get(detaiController.getDeTaiTieuLuanSVDXList)
 	
 router.route('/api/detai_nienluancoso_svdx')
 	.get(detaiController.getDeTaiNienLuanCoSoSVDXList)

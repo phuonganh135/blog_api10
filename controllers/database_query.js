@@ -27,3 +27,17 @@ module.exports.updateDatabaseQuery = function (req, res, next) {
         res.status(201).send("Database query is updated successfully!");
     });
 };
+
+
+module.exports.craeteDatabaseQuery = function (req, res, next) {
+
+    dbQuries.craeteDatabaseQuery(function(error, result) {
+        if (error) {
+            res.status(501).json({
+                message: "Error create database query!",
+                error: error
+            });
+        }
+        res.status(201).send("Detai is added successfully!");
+    });
+};

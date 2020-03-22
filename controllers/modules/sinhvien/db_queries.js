@@ -83,6 +83,13 @@ module.exports.getSinhVienThucHienNienLuanList = function (gv_ma ,callback) {
     });
 };
 
+
+module.exports.getSinhVienThucHienTieuLuanList = function (gv_ma ,callback) {
+    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt WHERE svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
 module.exports.getSinhVienThucHienNienLuanCoSoList = function (gv_ma ,callback) {
     pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt WHERE svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
