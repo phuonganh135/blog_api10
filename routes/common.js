@@ -160,10 +160,41 @@ router.route('/api/detai_nienluancoso_svdx')
 router.route('/api/detai_sinhvien')
     .get(detaiController.getDeTaiListOfAllGianVien)
     .post(detaiController.createSinhVienDangKiDetai)
+	
+router.route('/api/detai_sinhvien_tieuluan')
+    .get(detaiController.getDeTaiListOfAllGianVienTieuLuan)
+	
+router.route('/api/detai_sinhvien_nienluan')
+    .get(detaiController.getDeTaiListOfAllGianVienNienLuan)
+	
+router.route('/api/detai_sinhvien_nienluancoso')
+    .get(detaiController.getDeTaiListOfAllGianVienNienLuanCoSo)
 
 router.route('/api/detai_sinhvien_dadangki')
     .get(detaiController.getDeTaiListYeuCau)
     .delete(detaiController.deleteDeTaiHuyYeuCau)
+	
+router.route('/api/detai_sinhvien_dadangki_tieuluan')
+    .get(detaiController.getDeTaiListYeuCauTieuLuan)
+	
+router.route('/api/detai_sinhvien_dadangki_nienluan')
+    .get(detaiController.getDeTaiListYeuCauNienLuan)
+	
+router.route('/api/detai_sinhvien_dadangki_nienluancoso')
+    .get(detaiController.getDeTaiListYeuCauNienLuanCoSo)
+	
+router.route('/api/detai_sinhvien_dadangki_luanvan_svdx')
+    .get(detaiController.getDeTaiListYeuCauLuanVanSVDX)
+
+
+router.route('/api/detai_sinhvien_dadangki_tieuluan_svdx')
+    .get(detaiController.getDeTaiListYeuCauTieuLuanSVDX)
+	
+router.route('/api/detai_sinhvien_dadangki_nienluan_svdx')
+    .get(detaiController.getDeTaiListYeuCauNienLuanSVDX)
+	
+router.route('/api/detai_sinhvien_dadangki_nienluancoso_svdx')
+    .get(detaiController.getDeTaiListYeuCauNienLuanCoSoSVDX)
 
 router.route('/api/detai_sinhvien_chapnhan')
     .get(detaiController.getDeTaiListChapNhan)

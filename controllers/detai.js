@@ -198,12 +198,153 @@ module.exports.getDeTaiListOfAllGianVien = function (req, res, next) {
     });
 };
 
+module.exports.getDeTaiListOfAllGianVienTieuLuan = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+    dbQuries.getDeTaiListOfAllGianVienTieuLuan(bmcn_ma, hk_ma , nh_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of all gianvien tieu luan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiListOfAllGianVienNienLuan = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+    dbQuries.getDeTaiListOfAllGianVienNienLuan(bmcn_ma, hk_ma , nh_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of all gianvien nien luan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getDeTaiListOfAllGianVienNienLuanCoSo = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+    dbQuries.getDeTaiListOfAllGianVienNienLuanCoSo(bmcn_ma, hk_ma , nh_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of all gianvien nien luan co so!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getDeTaiListYeuCau = function (req, res, next) {
     var sv_ma = req.query.sv_ma;
     dbQuries.getDeTaiListYeuCau(sv_ma, function(error, results) {
         if (error) {
             res.status(501).json({
                 message: "Error get detai list yeu cau!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getDeTaiListYeuCauTieuLuan = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauTieuLuan(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau tieu luan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getDeTaiListYeuCauNienLuan = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauNienLuan(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau nien luan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getDeTaiListYeuCauNienLuanCoSo = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauNienLuanCoSo(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau nien luan co so!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiListYeuCauLuanVanSVDX = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauLuanVanSVDX(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau luan van svdx!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiListYeuCauTieuLuanSVDX = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauTieuLuanSVDX(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau tieu luan svdx!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiListYeuCauNienLuanSVDX = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauNienLuanSVDX(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau nien luan svdx!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiListYeuCauNienLuanCoSoSVDX = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+    dbQuries.getDeTaiListYeuCauNienLuanCoSoSVDX(sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list yeu cau nien luan co so svdx!",
                 error: error
             });
         }
