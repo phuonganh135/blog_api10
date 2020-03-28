@@ -244,6 +244,73 @@ module.exports.getDeTaiListOfAllGianVienNienLuanCoSo = function (req, res, next)
     });
 };
 
+
+module.exports.getDeTaiListOfOneGianVien = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+	var gv_ma = req.query.gv_ma;
+    dbQuries.getDeTaiListOfOneGianVien(bmcn_ma, hk_ma , nh_ma,gv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of one gianvien!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getDeTaiListOfOneGianVienTieuLuan = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+	var gv_ma = req.query.gv_ma;
+    dbQuries.getDeTaiListOfOneGianVienTieuLuan(bmcn_ma, hk_ma , nh_ma, gv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of one gianvien tieu luan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getDeTaiListOfOneGianVienNienLuan = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+	var gv_ma = req.query.gv_ma;
+
+    dbQuries.getDeTaiListOfOneGianVienNienLuan(bmcn_ma, hk_ma , nh_ma, gv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of one gianvien nien luan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getDeTaiListOfOneGianVienNienLuanCoSo = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma;
+	var gv_ma = req.query.gv_ma;
+    dbQuries.getDeTaiListOfOneGianVienNienLuanCoSo(bmcn_ma, hk_ma , nh_ma,gv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of one gianvien nien luan co so!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getDeTaiListYeuCau = function (req, res, next) {
     var sv_ma = req.query.sv_ma;
     dbQuries.getDeTaiListYeuCau(sv_ma, function(error, results) {
@@ -394,6 +461,54 @@ module.exports.getDeTaiListChapNhan = function (req, res, next) {
         res.status(200).json(results);
     });
 };
+
+
+module.exports.getDeTaiListChapNhanTieuLuan = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+
+    dbQuries.getDeTaiListChapNhanTieuLuan(sv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai tieu luan list sinh vien chap nhan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
+module.exports.getDeTaiListChapNhanNienLuan = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+
+    dbQuries.getDeTaiListChapNhanNienLuan(sv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai nien luan list sinh vien chap nhan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
+module.exports.getDeTaiListChapNhanNienLuanCoSo = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+
+    dbQuries.getDeTaiListChapNhanNienLuanCoSo(sv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai nien luan co so list sinh vien chap nhan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 
 module.exports.deleteDeTaiHuyYeuCau = function (req, res, next) {

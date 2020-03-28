@@ -169,6 +169,18 @@ router.route('/api/detai_sinhvien_nienluan')
 	
 router.route('/api/detai_sinhvien_nienluancoso')
     .get(detaiController.getDeTaiListOfAllGianVienNienLuanCoSo)
+	
+router.route('/api/detai_sinhvien_gvma')
+    .get(detaiController.getDeTaiListOfOneGianVien)
+	
+router.route('/api/detai_sinhvien_tieuluan_gvma')
+    .get(detaiController.getDeTaiListOfOneGianVienTieuLuan)
+	
+router.route('/api/detai_sinhvien_nienluan_gvma')
+    .get(detaiController.getDeTaiListOfOneGianVienNienLuan)
+	
+router.route('/api/detai_sinhvien_nienluancoso_gvma')
+    .get(detaiController.getDeTaiListOfOneGianVienNienLuanCoSo)
 
 router.route('/api/detai_sinhvien_dadangki')
     .get(detaiController.getDeTaiListYeuCau)
@@ -198,6 +210,16 @@ router.route('/api/detai_sinhvien_dadangki_nienluancoso_svdx')
 
 router.route('/api/detai_sinhvien_chapnhan')
     .get(detaiController.getDeTaiListChapNhan)
+	
+router.route('/api/detai_sinhvien_chapnhan_tieuluan')
+    .get(detaiController.getDeTaiListChapNhanTieuLuan)
+	
+router.route('/api/detai_sinhvien_chapnhan_nienluan')
+    .get(detaiController.getDeTaiListChapNhanNienLuan)
+	
+	
+router.route('/api/detai_sinhvien_chapnhan_nienluancoso')
+    .get(detaiController.getDeTaiListChapNhanNienLuanCoSo)
 
 router.route('/api/detai_sinhvien_dexuat')
     .post(detaiController.createSinhVienDeXuatDetai)

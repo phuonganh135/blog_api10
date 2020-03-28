@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM loai_detai', (error, results) => {
+    pool.query('SELECT * FROM sinhvien_dk_detai', (error, results) => {
         callback(error, results.rows);
     });
 };
