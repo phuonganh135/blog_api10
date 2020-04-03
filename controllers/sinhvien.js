@@ -137,6 +137,113 @@ module.exports.getSinhVienThucHienNienLuanCoSoList = function (req, res, next) {
 };
 
 
+module.exports.getSinhVienBaoCaoList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienBaoCaoList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien baocao list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienBaoCaoNienLuanList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienBaoCaoNienLuanList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien baocao nien luan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienBaoCaoTieuLuanList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienBaoCaoTieuLuanList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien baocao tieu luan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienBaoCaoNienLuanCoSoList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienBaoCaoNienLuanCoSoList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien baocao nien luan co so list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
+module.exports.getSinhVienTuChoiBaoCaoList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienTuChoiBaoCaoList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get tuchoi baocao thuchien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienTuChoiBaoCaoNienLuanList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienTuChoiBaoCaoNienLuanList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien tuchoi baocao nien luan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienTuChoiBaoCaoTieuLuanList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienTuChoiBaoCaoTieuLuanList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien tuchoi baocao tieu luan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienTuChoiBaoCaoNienLuanCoSoList = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienTuChoiBaoCaoNienLuanCoSoList(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien tuchoi baocao nien luan co so list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
 module.exports.updateSinhVienDangKiAccept = function (req, res, next) {
     var dt_ma = req.query.dt_ma;
     var sv_ma = req.query.sv_ma;

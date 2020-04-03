@@ -114,6 +114,46 @@ router.route('/api/sinhvien_thuchien_tieuluan')
 	
 router.route('/api/sinhvien_thuchien_nienluan_coso')
     .get(sinhvienController.getSinhVienThucHienNienLuanCoSoList)
+	
+	
+router.route('/api/sinhvien_baocao')
+    .get(sinhvienController.getSinhVienBaoCaoList)
+	
+router.route('/api/sinhvien_baocao_nienluan')
+    .get(sinhvienController.getSinhVienBaoCaoNienLuanList)
+	
+router.route('/api/sinhvien_baocao_tieuluan')
+    .get(sinhvienController.getSinhVienBaoCaoTieuLuanList)
+	
+router.route('/api/sinhvien_baocao_nienluan_coso')
+    .get(sinhvienController.getSinhVienBaoCaoNienLuanCoSoList)
+	
+	
+router.route('/api/sinhvien_tuchoi_baocao')
+    .get(sinhvienController.getSinhVienTuChoiBaoCaoList)
+	
+router.route('/api/sinhvien_tuchoi_baocao_nienluan')
+    .get(sinhvienController.getSinhVienTuChoiBaoCaoNienLuanList)
+	
+router.route('/api/sinhvien_tuchoi_baocao_tieuluan')
+    .get(sinhvienController.getSinhVienTuChoiBaoCaoTieuLuanList)
+	
+router.route('/api/sinhvien_tuchoi_baocao_nienluan_coso')
+    .get(sinhvienController.getSinhVienTuChoiBaoCaoNienLuanCoSoList)
+	
+	
+	
+router.route('/api/sinhvien_thuchien')
+    .get(sinhvienController.getSinhVienThucHienList)
+	
+router.route('/api/sinhvien_thuchien_nienluan')
+    .get(sinhvienController.getSinhVienThucHienNienLuanList)
+	
+router.route('/api/sinhvien_thuchien_tieuluan')
+    .get(sinhvienController.getSinhVienThucHienTieuLuanList)
+	
+router.route('/api/sinhvien_thuchien_nienluan_coso')
+    .get(sinhvienController.getSinhVienThucHienNienLuanCoSoList)
 
 router.route('/api/sinhvien_info')
     .get(sinhvienController.getSinhVienInfo)
@@ -184,6 +224,8 @@ router.route('/api/detai_sinhvien_nienluancoso_gvma')
 
 router.route('/api/detai_sinhvien_dadangki')
     .get(detaiController.getDeTaiListYeuCau)
+	.post(detaiController.createDeTaiChapNhanBaoCao)
+	.put(detaiController.createDeTaiTuChoiBaoCao)
     .delete(detaiController.deleteDeTaiHuyYeuCau)
 	
 router.route('/api/detai_sinhvien_dadangki_tieuluan')
@@ -207,6 +249,9 @@ router.route('/api/detai_sinhvien_dadangki_nienluan_svdx')
 	
 router.route('/api/detai_sinhvien_dadangki_nienluancoso_svdx')
     .get(detaiController.getDeTaiListYeuCauNienLuanCoSoSVDX)
+	
+router.route('/api/detai_info_sinhvien')
+    .get(detaiController.getDeTaiInfoSVChapNhan)
 
 router.route('/api/detai_sinhvien_chapnhan')
     .get(detaiController.getDeTaiListChapNhan)

@@ -167,6 +167,22 @@ module.exports.updateDeTai = function (req, res, next) {
 };
 
 
+module.exports.createDeTaiTuChoiBaoCao = function (req, res, next) {
+    var dt_ma = req.query.dt_ma;
+	var sv_ma = req.query.sv_ma;
+    dbQuries.createDeTaiTuChoiBaoCao(dt_ma,sv_ma, function(error, result) {
+        if (error) {
+            res.status(501).json({
+                message: "Error update tuchoi baocao detai " + dt_ma,
+                error: error
+            });
+        }
+        res.status(201).send("Detai " + dt_ma + " is tuchoi baocao successfully!");
+    });
+};
+
+
+
 module.exports.deleteDeTai = function (req, res, next) {
     var dt_ma = req.query.dt_ma;
     dbQuries.deleteDeTai(dt_ma, function(error, result) {
@@ -434,6 +450,21 @@ module.exports.createSinhVienDangKiDetai = function (req, res, next) {
 };
 
 
+module.exports.createDeTaiChapNhanBaoCao = function (req, res, next) {
+    var dt_ma = req.query.dt_ma;
+    var sv_ma = req.query.sv_ma;
+    dbQuries.createDeTaiChapNhanBaoCao(dt_ma,sv_ma, function(error, result) {
+        if (error) {
+            res.status(501).json({
+                message: "Error create new sinh vien chap nhan bao cao detai!",
+                error: error
+            });
+        }
+        res.status(201).send("Sinh vien vien chap nhan bao cao detai is added successfully!");
+    });
+};
+
+
 module.exports.createSinhVienDeXuatDetai = function (req, res, next) {
     var svdexuatdetaiInfo = req.body;
     dbQuries.createSinhVienDeXuatDetai(svdexuatdetaiInfo, function(error, result) {
@@ -446,6 +477,22 @@ module.exports.createSinhVienDeXuatDetai = function (req, res, next) {
         res.status(201).send("Sinh vien de xuat de tai detai is added successfully!");
     });
 };
+
+module.exports.getDeTaiInfoSVChapNhan = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+	var dt_ma = req.query.dt_ma;
+
+    dbQuries.getDeTaiInfoSVChapNhan(sv_ma, dt_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai info sinh vien chap nhan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 
 module.exports.getDeTaiListChapNhan = function (req, res, next) {

@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai', (error, results) => {
+    pool.query('SELECT * FROM trangthai_dangki', (error, results) => {
         callback(error, results.rows);
     });
 };
@@ -26,7 +26,7 @@ module.exports.updateDatabaseQuery = function ( callback) {
 
 module.exports.craeteDatabaseQuery = function ( callback) {
 
-    pool.query('INSERT INTO loai_detai VALUES (\'tl\',\'Tiểu luận\',0)', (error, result) => {
+    pool.query('INSERT INTO trangthai_dangki VALUES (\'tcbc\',\'Từ chối báo cáo\',0)', (error, result) => {
         callback(error, result);
     });
 };
