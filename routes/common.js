@@ -143,17 +143,7 @@ router.route('/api/sinhvien_tuchoi_baocao_nienluan_coso')
 	
 	
 	
-router.route('/api/sinhvien_thuchien')
-    .get(sinhvienController.getSinhVienThucHienList)
-	
-router.route('/api/sinhvien_thuchien_nienluan')
-    .get(sinhvienController.getSinhVienThucHienNienLuanList)
-	
-router.route('/api/sinhvien_thuchien_tieuluan')
-    .get(sinhvienController.getSinhVienThucHienTieuLuanList)
-	
-router.route('/api/sinhvien_thuchien_nienluan_coso')
-    .get(sinhvienController.getSinhVienThucHienNienLuanCoSoList)
+
 
 router.route('/api/sinhvien_info')
     .get(sinhvienController.getSinhVienInfo)
