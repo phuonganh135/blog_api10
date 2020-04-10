@@ -97,6 +97,32 @@ module.exports.getSinhVienThucHienNienLuanCoSoList = function (gv_ma ,callback) 
 };
 
 
+module.exports.getSinhVienThucHienListAll = function (gv_ma ,callback) {
+    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+module.exports.getSinhVienThucHienNienLuanListAll = function (gv_ma ,callback) {
+    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma  and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+module.exports.getSinhVienThucHienTieuLuanListAll = function (gv_ma ,callback) {
+    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+module.exports.getSinhVienThucHienNienLuanCoSoListAll = function (gv_ma ,callback) {
+    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma  and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
 module.exports.getSinhVienBaoCaoList = function (gv_ma ,callback) {
     pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);

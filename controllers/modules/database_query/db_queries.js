@@ -19,7 +19,7 @@ module.exports.getDatabaseQuery = function ( callback) {
 
 module.exports.updateDatabaseQuery = function ( callback) {
 
-    pool.query('UPDATE lop SET bmcn_ma=\'CNTT\' WHERE l_ma=$1', ['DI15V7A1'], (error, result) => {
+    pool.query('UPDATE trangthai_dangki SET ttdk_ten=\'Đang thực hiện\' WHERE ttdk_ma=$1', ['cn'], (error, result) => {
         callback(error, result);
     });
 };

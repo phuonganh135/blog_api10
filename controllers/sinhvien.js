@@ -137,6 +137,60 @@ module.exports.getSinhVienThucHienNienLuanCoSoList = function (req, res, next) {
 };
 
 
+
+module.exports.getSinhVienThucHienListAll = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienThucHienListAll(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thuchien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThucHienNienLuanListAll = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienThucHienNienLuanListAll(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thuchien nien luan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThucHienTieuLuanListAll = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienThucHienTieuLuanListAll(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thuchien tieu luan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThucHienNienLuanCoSoListAll = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienThucHienNienLuanCoSoListAll(gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thuchien nien luan co so list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
 module.exports.getSinhVienBaoCaoList = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
     dbQuries.getSinhVienBaoCaoList(gv_ma, function(error, results) {
