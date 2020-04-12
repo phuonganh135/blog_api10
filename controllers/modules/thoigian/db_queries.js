@@ -4,8 +4,8 @@ var dbConfig = require('../../db_config.json');
 const pool = new Pool(dbConfig);
 
 
-module.exports.getThoiGianList = function (nh_ma, hk_ma, k_ma, callback) {
-    pool.query('SELECT * FROM thoigian_dk_bc as tgdkbc, loai_thoigian as ltg WHERE tgdkbc.ltg_ma = ltg.ltg_ma and tgdkbc.nh_ma = $1 and tgdkbc.hk_ma = $2 and tgdkbc.k_ma = $3 and  tgdkbc.tg_xoa=0', [nh_ma, hk_ma , k_ma ], (error, results) => {
+module.exports.getThoiGianList = function (nh_ma, hk_ma, k_ma, ltg_loaidetai,  callback) {
+    pool.query('SELECT * FROM thoigian_dk_bc as tgdkbc, loai_thoigian as ltg WHERE tgdkbc.ltg_ma = ltg.ltg_ma and tgdkbc.nh_ma = $1 and tgdkbc.hk_ma = $2 and tgdkbc.k_ma = $3 and  tgdkbc.tg_xoa=0 and ltg.ltg_xoa=0 and ltg.ltg_loaidetai=$4', [nh_ma, hk_ma , k_ma, ltg_loaidetai ], (error, results) => {
         callback(error, results.rows);
     });
 };

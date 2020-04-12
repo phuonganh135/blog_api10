@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM trangthai_dangki', (error, results) => {
+    pool.query('SELECT * FROM loai_thoigian', (error, results) => {
         callback(error, results.rows);
     });
 };
@@ -19,14 +19,14 @@ module.exports.getDatabaseQuery = function ( callback) {
 
 module.exports.updateDatabaseQuery = function ( callback) {
 
-    pool.query('UPDATE trangthai_dangki SET ttdk_ten=\'Đang thực hiện\' WHERE ttdk_ma=$1', ['cn'], (error, result) => {
+    pool.query('UPDATE loai_thoigian SET  ltg_loaidetai=\'tl\' WHERE ltg_ma=4', (error, result) => {
         callback(error, result);
     });
 };
 
 module.exports.craeteDatabaseQuery = function ( callback) {
 
-    pool.query('INSERT INTO trangthai_dangki VALUES (\'tcbc\',\'Từ chối báo cáo\',0)', (error, result) => {
+    pool.query('INSERT INTO loai_thoigian  VALUES (8,\'Báo cáo niên luận cơ sở\',\'nlcs\',0)', (error, result) => {
         callback(error, result);
     });
 };
