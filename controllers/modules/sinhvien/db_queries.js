@@ -66,110 +66,110 @@ module.exports.deleteSinhVien = function (sv_ma, callback) {
 };
 
 module.exports.getSinhVienDangKiList = function (dt_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv WHERE svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'yc\' and svdkdt.dt_ma=$1 and svdkdt.svdkdt_xoa=0 and sv.sv_xoa=0', [dt_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'yc\' and svdkdt.dt_ma=$1 and svdkdt.svdkdt_xoa=0 and sv.sv_xoa=0', [dt_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienThucHienList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienThucHienNienLuanList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienThucHienTieuLuanList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienThucHienNienLuanCoSoList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cn\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienThucHienListAll = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienThucHienNienLuanListAll = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma  and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma  and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienThucHienTieuLuanListAll = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienThucHienNienLuanCoSoListAll = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma  and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma  and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienBaoCaoList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienBaoCaoNienLuanList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienBaoCaoTieuLuanList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienBaoCaoNienLuanCoSoList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'cnbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienTuChoiBaoCaoList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienTuChoiBaoCaoNienLuanList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
 module.exports.getSinhVienTuChoiBaoCaoTieuLuanList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'tl\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getSinhVienTuChoiBaoCaoNienLuanCoSoList = function (gv_ma ,callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and svdkdt.sv_ma = sv.sv_ma and svdkdt.ttdk_ma=\'tcbc\' and dt.gv_ma=$1 and dt.ldt_ma=\'nlcs\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
