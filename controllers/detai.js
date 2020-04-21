@@ -214,6 +214,24 @@ module.exports.getDeTaiListOfAllGianVien = function (req, res, next) {
     });
 };
 
+module.exports.getDeTaiListOfAllGianVienUpdate = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    var hk_ma = req.query.hk_ma;
+    var nh_ma = req.query.nh_ma
+	var ldt_ma = req.query.ldt_ma;
+	var sv_ma = req.query.sv_ma;
+	
+    dbQuries.getDeTaiListOfAllGianVienUpdate(bmcn_ma, hk_ma , nh_ma, ldt_ma, sv_ma,   function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list of all gianvien update!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getDeTaiListOfAllGianVienTieuLuan = function (req, res, next) {
     var bmcn_ma = req.query.bmcn_ma;
     var hk_ma = req.query.hk_ma;

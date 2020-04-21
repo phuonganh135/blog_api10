@@ -203,6 +203,9 @@ router.route('/api/detai_sinhvien')
     .get(detaiController.getDeTaiListOfAllGianVien)
     .post(detaiController.createSinhVienDangKiDetai)
 	
+router.route('/api/detai_sinhvien_update')
+    .get(detaiController.getDeTaiListOfAllGianVienUpdate)
+	
 router.route('/api/detai_sinhvien_tieuluan')
     .get(detaiController.getDeTaiListOfAllGianVienTieuLuan)
 	
