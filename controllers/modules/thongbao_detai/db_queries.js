@@ -17,13 +17,17 @@ module.exports.createThongBaoDeTai = function (thongbaoInfo, callback) {
 
 
 module.exports.getThongBaoDeTaiList = function (gv_ma, callback) {
-    pool.query('SELECT * FROM binhluan as bl, detai as dt  WHERE bl.dt_ma = dt.dt_ma and dt.gv_ma=$1',[gv_ma], (error, results) => {
+    pool.query('SELECT * FROM binhluan as bl, detai as dt  WHERE bl.dt_ma = dt.dt_ma and dt.gv_ma=$1 and bl.bl_xoa=0 and bl.nguoibl_ma!=$1 and dt.dt_xoa=0',[gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
 
 
-
+module.exports.getThongBaoDeTaiListSinhVien = function (gv_ma, sv_ma, callback) {
+    pool.query('SELECT * FROM binhluan as bl, detai as dt  WHERE bl.dt_ma = dt.dt_ma and dt.gv_ma=$1 and bl.bl_xoa=0 and bl.nguoibl_ma!=$2 and dt.dt_xoa=0',[gv_ma, sv_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
 
 
 

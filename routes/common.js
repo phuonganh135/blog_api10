@@ -215,6 +215,9 @@ router.route('/api/detai_sinhvien_nienluan')
 router.route('/api/detai_sinhvien_nienluancoso')
     .get(detaiController.getDeTaiListOfAllGianVienNienLuanCoSo)
 	
+router.route('/api/detai_sinhvien_gvma_update')
+    .get(detaiController.getDeTaiListOfOneGianVienUpdate)
+	
 router.route('/api/detai_sinhvien_gvma')
     .get(detaiController.getDeTaiListOfOneGianVien)
 	
@@ -306,6 +309,8 @@ router.route('/api/thongbao_detai')
     .get(thongbaodtController.getThongBaoDeTaiList)
     .put(thongbaodtController.updateThongBaoDeTai)
 
+router.route('/api/thongbao_detai_sinhvien')
+	.get(thongbaodtController.getThongBaoDeTaiListSinhVien)
 
 /* SINHVIEN ROUTES*/
 // router.route('/api/sinhvien')

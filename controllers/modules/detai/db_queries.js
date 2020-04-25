@@ -199,6 +199,20 @@ module.exports.getDeTaiListOfAllGianVienUpdate = function (bmcn_ma, hk_ma , nh_m
     });
 };
 
+module.exports.getDeTaiListOfOneGianVienUpdate = function (bmcn_ma, hk_ma , nh_ma,gv_ma, ldt_ma, sv_ma, callback) {
+    pool.query('SELECT * FROM detai as dt , gianvien as gv , gianvien_huongdan as gvhd WHERE gv.gv_ma = gvhd.gv_ma and gvhd.gv_ma = dt.gv_ma and dt.dt_xoa = 0 and gv.gv_xoa=0 and gvhd.gvhd_xoa=0 and gv.bmcn_ma=$1 and gvhd.hk_ma=$2 and gvhd.nh_ma=$3 and dt.ldt_ma=$5 and dt.dt_trangthai=\'dtgv\' and gv.gv_ma=$4 and dt.dt_ma not in ( select dt_ma from sinhvien_dk_detai where (ttdk_ma=\'cn\' or ttdk_ma=\'cnbc\' or ttdk_ma=\'tcbc\' or ttdk_ma=\'yc\') and sv_ma=$6)  ',[bmcn_ma, hk_ma , nh_ma,gv_ma, ldt_ma, sv_ma], async function (error, results) {
+        var listDeTai = results.rows;
+        // var listResult = results.rows;
+        for (var i = 0; i < listDeTai.length; i++) {
+            var deTai = listDeTai[i];
+            var dt_ma = deTai.dt_ma;
+            deTai.svdk = await getSinhVienDangKy(dt_ma);
+            listDeTai[i] = deTai;
+        }
+        callback(error, listDeTai);
+    });
+};
+
 module.exports.getDeTaiListOfAllGianVienTieuLuan = function (bmcn_ma, hk_ma , nh_ma, callback) {
     pool.query('SELECT * FROM detai as dt , gianvien as gv , gianvien_huongdan as gvhd WHERE gv.gv_ma = gvhd.gv_ma and gvhd.gv_ma = dt.gv_ma and dt.dt_xoa = 0 and gv.gv_xoa=0 and gvhd.gvhd_xoa=0 and gv.bmcn_ma=$1 and gvhd.hk_ma=$2 and gvhd.nh_ma=$3 and dt.ldt_ma=\'tl\' and dt.dt_trangthai=\'dtgv\' ',[bmcn_ma, hk_ma , nh_ma], async function (error, results) {
         var listDeTai = results.rows;

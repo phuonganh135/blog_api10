@@ -30,6 +30,21 @@ module.exports.getThongBaoDeTaiList = function (req, res, next) {
 };
 
 
+module.exports.getThongBaoDeTaiListSinhVien = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+	var sv_ma = req.query.sv_ma;
+    dbQuries.getThongBaoDeTaiListSinhVien(gv_ma, sv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get thongbao sinh vien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
 module.exports.updateThongBaoDeTai = function (req, res, next) {
     var tbdt_stt = req.query.tbdt_stt;
     var sv_ma = req.query.sv_ma;

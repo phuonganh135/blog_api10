@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai where sv_ma=\'B1507297\'', (error, results) => {
+    pool.query('SELECT * FROM binhluan', (error, results) => {
         callback(error, results.rows);
     });
 };
