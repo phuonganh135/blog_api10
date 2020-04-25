@@ -177,7 +177,14 @@ module.exports.getSinhVienTuChoiBaoCaoNienLuanCoSoList = function (gv_ma ,callba
 
 module.exports.updateSinhVienDangKiAccept = function (dt_ma, sv_ma, callback) {
     pool.query('UPDATE sinhvien_dk_detai set ttdk_ma=\'cn\' WHERE dt_ma=$1 and sv_ma=$2 ', [dt_ma,sv_ma], (error, result) => {
-        callback(error, result);
+        //callback(error, result);
+		if (error) {
+            callback(error, result);
+        }
+        pool.query('UPDATE sinhvien_dk_detai set svdkdt_xoa=1 , ttdk_ma=\'hdk\'  WHERE dt_ma!=$1 and sv_ma=$2 and svdkdt_xoa=0 and ttdk_ma=\'yc\'', [dt_ma, sv_ma], (error2, result2) => {
+            // callback(error, result);
+            callback(error2, result2);
+        });
     });
 };
 
