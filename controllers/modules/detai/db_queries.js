@@ -82,7 +82,7 @@ module.exports.getDeTaiNienLuanCoSoList = function (gv_ma, callback) {
 };
 
 module.exports.getDeTaiLuanVanSVDXList = function (gv_ma, callback) {
-    pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'svdx\' and ldt_ma=\'lv\'',[gv_ma], async function (error, results) {
+    pool.query('SELECT * FROM detai as dt , sinhvien_dk_detai as svdkdt , sinhvien as sv  WHERE dt.dt_ma=svdkdt.dt_ma and svdkdt.svdkdt_xoa=0 and svdkdt.sv_ma=sv.sv_ma and sv.sv_xoa=0 and svdkdt.ttdk_ma!= \'hdk\' and dt.gv_ma = $1 and dt.dt_xoa = 0 and dt.dt_trangthai=\'svdx\' and dt.ldt_ma=\'lv\'',[gv_ma], async function (error, results) {
         var listDeTai = results.rows;
         // var listResult = results.rows;
         for (var i = 0; i < listDeTai.length; i++) {
@@ -96,7 +96,7 @@ module.exports.getDeTaiLuanVanSVDXList = function (gv_ma, callback) {
 };
 
 module.exports.getDeTaiNienLuanSVDXList = function (gv_ma, callback) {
-    pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'svdx\' and ldt_ma=\'nl\'',[gv_ma], async function (error, results) {
+    pool.query('SELECT * FROM detai as dt , sinhvien_dk_detai as svdkdt , sinhvien as sv  WHERE dt.dt_ma=svdkdt.dt_ma and svdkdt.svdkdt_xoa=0 and svdkdt.sv_ma=sv.sv_ma and sv.sv_xoa=0 and svdkdt.ttdk_ma!= \'hdk\' and dt.gv_ma = $1 and dt.dt_xoa = 0 and dt.dt_trangthai=\'svdx\' and dt.ldt_ma=\'nl\'',[gv_ma], async function (error, results) {
         var listDeTai = results.rows;
         // var listResult = results.rows;
         for (var i = 0; i < listDeTai.length; i++) {
@@ -110,7 +110,7 @@ module.exports.getDeTaiNienLuanSVDXList = function (gv_ma, callback) {
 };
 
 module.exports.getDeTaiTieuLuanSVDXList = function (gv_ma, callback) {
-    pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'svdx\' and ldt_ma=\'tl\'',[gv_ma], async function (error, results) {
+    pool.query('SELECT * FROM detai as dt , sinhvien_dk_detai as svdkdt , sinhvien as sv  WHERE dt.dt_ma=svdkdt.dt_ma and svdkdt.svdkdt_xoa=0 and svdkdt.sv_ma=sv.sv_ma and sv.sv_xoa=0 and svdkdt.ttdk_ma!= \'hdk\' and dt.gv_ma = $1 and dt.dt_xoa = 0 and dt.dt_trangthai=\'svdx\' and dt.ldt_ma=\'tl\'',[gv_ma], async function (error, results) {
         var listDeTai = results.rows;
         // var listResult = results.rows;
         for (var i = 0; i < listDeTai.length; i++) {
@@ -124,7 +124,7 @@ module.exports.getDeTaiTieuLuanSVDXList = function (gv_ma, callback) {
 };
 
 module.exports.getDeTaiNienLuanCoSoSVDXList = function (gv_ma, callback) {
-    pool.query('SELECT * FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'svdx\' and ldt_ma=\'nlcs\'',[gv_ma], async function (error, results) {
+    pool.query('SELECT * FROM detai as dt , sinhvien_dk_detai as svdkdt , sinhvien as sv  WHERE dt.dt_ma=svdkdt.dt_ma and svdkdt.svdkdt_xoa=0 and svdkdt.sv_ma=sv.sv_ma and sv.sv_xoa=0 and svdkdt.ttdk_ma!= \'hdk\' and dt.gv_ma = $1 and dt.dt_xoa = 0 and dt.dt_trangthai=\'svdx\' and dt.ldt_ma=\'nlcs\'',[gv_ma], async function (error, results) {
         var listDeTai = results.rows;
         // var listResult = results.rows;
         for (var i = 0; i < listDeTai.length; i++) {
