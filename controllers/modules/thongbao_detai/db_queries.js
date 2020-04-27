@@ -23,8 +23,8 @@ module.exports.getThongBaoDeTaiList = function (gv_ma, callback) {
 };
 
 
-module.exports.getThongBaoDeTaiListSinhVien = function (gv_ma, sv_ma, callback) {
-    pool.query('SELECT * FROM binhluan as bl, detai as dt  WHERE bl.dt_ma = dt.dt_ma and dt.gv_ma=$1 and bl.bl_xoa=0 and bl.nguoibl_ma!=$2 and dt.dt_xoa=0',[gv_ma, sv_ma], (error, results) => {
+module.exports.getThongBaoDeTaiListSinhVien = function ( sv_ma, callback) {
+    pool.query('SELECT * FROM binhluan as bl, detai as dt, sinhvien_dk_detai as svdkdt  WHERE svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma=$1 and bl.dt_ma = dt.dt_ma and  bl.bl_xoa=0 and bl.nguoibl_ma!=$1 and dt.dt_xoa=0',[ sv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };

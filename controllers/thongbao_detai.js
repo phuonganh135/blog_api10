@@ -31,9 +31,8 @@ module.exports.getThongBaoDeTaiList = function (req, res, next) {
 
 
 module.exports.getThongBaoDeTaiListSinhVien = function (req, res, next) {
-    var gv_ma = req.query.gv_ma;
 	var sv_ma = req.query.sv_ma;
-    dbQuries.getThongBaoDeTaiListSinhVien(gv_ma, sv_ma, function(error, results) {
+    dbQuries.getThongBaoDeTaiListSinhVien( sv_ma, function(error, results) {
         if (error) {
             res.status(501).json({
                 message: "Error get thongbao sinh vien list!",
