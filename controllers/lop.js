@@ -27,6 +27,33 @@ module.exports.getLopList = function (req, res, next) {
     });
 };
 
+module.exports.getLopListAll = function (req, res, next) {
+
+    dbQuries.getLopListAll( function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get lop all ",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getLopLisKhoa = function (req, res, next) {
+    var k_ma = req.query.k_ma;
+    dbQuries.getLopLisKhoa(k_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get lop with k_ma " + k_ma,
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.updateLopInfo = function (req, res, next) {
     var l_ma = req.query.l_ma;
     var lopInfo = req.body;

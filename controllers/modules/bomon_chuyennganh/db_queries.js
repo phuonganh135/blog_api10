@@ -14,7 +14,13 @@ module.exports.createBoMonChuyenNganh = function (bomon_chuyennganhInfo, callbac
 
 
 module.exports.getBoMonChuyenNganhList = function (k_ma, callback) {
-    pool.query('SELECT * FROM bomon_chuyennganh WHERE bmcn_xoa=0 and k_ma = $1', [k_ma], (error, results) => {
+    pool.query('SELECT * FROM bomon_chuyennganh as bmcn , khoa as k WHERE bmcn.bmcn_xoa=0 and bmcn.k_ma = $1 and bmcn.k_ma=k.k_ma and k.k_xoa=0', [k_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+module.exports.getBoMonChuyenNganhListAll = function ( callback) {
+    pool.query('SELECT * FROM bomon_chuyennganh as bmcn , khoa as k WHERE bmcn.bmcn_xoa=0 and bmcn.k_ma=k.k_ma and k.k_xoa=0', (error, results) => {
         callback(error, results.rows);
     });
 };

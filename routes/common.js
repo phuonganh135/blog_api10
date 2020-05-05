@@ -66,7 +66,10 @@ router.route('/api/bomon_chuyennganh')
     .get(bomon_chuyennganhController.getBoMonChuyenNganhList)
     .put(bomon_chuyennganhController.updateBoMonChuyenNganhInfo)
     .delete(bomon_chuyennganhController.deleteBoMonChuyenNganh)
-
+	
+router.route('/api/bomon_chuyennganh_all')
+	.get(bomon_chuyennganhController.getBoMonChuyenNganhListAll)
+	
 router.route('/api/bomon_chuyennganh_info')
     .get(bomon_chuyennganhController.getBoMonChuyenNganhInfo)
 
@@ -79,6 +82,17 @@ router.route('/api/giangvien')
     .post(giangvienController.createGiangVien)
     .get(giangvienController.getGiangVienList)
     .delete(giangvienController.deleteGiangVien)
+	
+	
+
+
+router.route('/api/giangvien_all')
+	.get(giangvienController.getGiangVienListAll)
+	
+	
+	
+router.route('/api/giangvien_khoa')
+	.get(giangvienController.getGiangVienListKhoa)
 
 router.route('/api/giangvien_info')
     .get(giangvienController.getGiangVienInfo)
@@ -89,6 +103,13 @@ router.route('/api/lop')
     .get(lopController.getLopList)
     .put(lopController.updateLopInfo)
     .delete(lopController.deleteLop)
+	
+
+router.route('/api/lop_all')
+	.get(lopController.getLopListAll)
+	
+router.route('/api/lop_khoa')
+	.get(lopController.getLopLisKhoa)
 
 router.route('/api/lop_info')
     .get(lopController.getLopInfo)

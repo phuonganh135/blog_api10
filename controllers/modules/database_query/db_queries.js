@@ -19,7 +19,7 @@ module.exports.getDatabaseQuery = function ( callback) {
 
 module.exports.updateDatabaseQuery = function ( callback) {
 
-    pool.query('UPDATE loai_thoigian SET  ltg_loaidetai=\'tl\' WHERE ltg_ma=4', (error, result) => {
+    pool.query('UPDATE khoa SET  k_xoa=0 WHERE k_ma=\'CNTT\'', (error, result) => {
         callback(error, result);
     });
 };

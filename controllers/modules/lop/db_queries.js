@@ -14,7 +14,24 @@ module.exports.createLop = function (lopInfo, callback) {
 
 
 module.exports.getLopList = function (bmcn_ma, callback) {
-    pool.query('SELECT * FROM lop WHERE l_xoa=0 and bmcn_ma = $1', [bmcn_ma], (error, results) => {
+    pool.query('SELECT * FROM lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE bmcn.bmcn_xoa=0 and k.k_xoa=0 and l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and l.l_xoa=0 and l.bmcn_ma=$1', [bmcn_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+
+
+module.exports.getLopListAll = function ( callback) {
+    pool.query('SELECT * FROM lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE bmcn.bmcn_xoa=0 and k.k_xoa=0 and l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and l.l_xoa=0 ' ,(error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+
+module.exports.getLopLisKhoa = function (k_ma, callback) {
+    pool.query('SELECT * FROM lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE bmcn.bmcn_xoa=0 and k.k_xoa=0 and l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and l.l_xoa=0 and k.k_ma=$1', [k_ma], (error, results) => {
         callback(error, results.rows);
     });
 };

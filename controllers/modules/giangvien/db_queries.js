@@ -13,13 +13,26 @@ module.exports.createGiangVien = function (giangvienInfo, callback) {
 };
 
 module.exports.getGiangVienList = function (bmcn_ma,callback) {
-    pool.query('SELECT * FROM gianvien WHERE gv_xoa=0 and bmcn_ma=$1', [bmcn_ma] , (error, results) => {
+    pool.query('SELECT * FROM gianvien as gv, bomon_chuyennganh as bmcn, khoa as k WHERE k.k_xoa=0 and bmcn.bmcn_xoa=0 and gv.gv_xoa=0 and gv.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and gv.bmcn_ma = $1', [bmcn_ma] , (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+module.exports.getGiangVienListAll = function (callback) {
+    pool.query('SELECT * FROM gianvien as gv, bomon_chuyennganh as bmcn, khoa as k WHERE k.k_xoa=0 and bmcn.bmcn_xoa=0 and gv.gv_xoa=0 and gv.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma ', (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+module.exports.getGiangVienListKhoa = function (k_ma,callback) {
+    pool.query('SELECT * FROM gianvien as gv, bomon_chuyennganh as bmcn, khoa as k WHERE k.k_xoa=0 and bmcn.bmcn_xoa=0 and gv.gv_xoa=0 and gv.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and k.k_ma = $1', [k_ma] , (error, results) => {
         callback(error, results.rows);
     });
 };
 
 module.exports.getGiangVienInfo = function (gv_ma, callback) {
-    pool.query('SELECT * FROM gianvien as gv, bomon_chuyennganh as bmcn, khoa as k WHERE gv.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and gv.gv_ma = $1', [gv_ma], (error, results) => {
+    pool.query('SELECT * FROM gianvien as gv, bomon_chuyennganh as bmcn, khoa as k WHERE k.k_xoa=0 and bmcn.bmcn_xoa=0 and gv.gv_xoa=0 and gv.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and gv.gv_ma = $1', [gv_ma], (error, results) => {
         callback(error, results.rows);
     });
 };

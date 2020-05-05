@@ -26,6 +26,32 @@ module.exports.getGiangVienList = function (req, res, next) {
     });
 };
 
+module.exports.getGiangVienListAll = function (req, res, next) {
+    dbQuries.getGiangVienListAll(function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get GiangVien list all !",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getGiangVienListKhoa = function (req, res, next) {
+    var k_ma = req.query.k_ma;
+    dbQuries.getGiangVienListKhoa(k_ma ,function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get GiangVien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getGiangVienInfo = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
     dbQuries.getGiangVienInfo(gv_ma,function(error, results) {
