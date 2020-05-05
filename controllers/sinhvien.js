@@ -27,6 +27,47 @@ module.exports.getSinhVienList = function (req, res, next) {
     });
 };
 
+module.exports.getSinhVienListAll = function (req, res, next) {
+    
+    dbQuries.getSinhVienListAll(function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getSinhVienListKhoa = function (req, res, next) {
+    var k_ma = req.query.k_ma;
+    dbQuries.getSinhVienListKhoa(k_ma,function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+module.exports.getSinhVienListBMCN = function (req, res, next) {
+    var bmcn_ma = req.query.bmcn_ma;
+    dbQuries.getSinhVienListBMCN(bmcn_ma,function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 module.exports.getSinhVienInfo = function (req, res, next) {
     var sv_ma = req.query.sv_ma;

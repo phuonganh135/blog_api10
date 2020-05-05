@@ -22,7 +22,27 @@ module.exports.createSinhVien = function (sinhvienInfo, callback) {
 
 
 module.exports.getSinhVienList = function (l_ma, callback) {
-    pool.query('SELECT * FROM sinhvien as sv , sinhvien_lop as svl , lop as l WHERE sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and sv.sv_xoa=0 and svl.l_ma=$1 and svl.svl_xoa=0 ', [l_ma], (error, results) => {
+    pool.query('SELECT * FROM sinhvien as sv , sinhvien_lop as svl , lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE l.bmcn_ma=bmcn.bmcn_ma and bmcn.k_ma=k.k_ma and bmcn.bmcn_xoa=0 and k.k_xoa=0 and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and sv.sv_xoa=0 and svl.l_ma=$1 and svl.svl_xoa=0 ', [l_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+module.exports.getSinhVienListAll = function ( callback) {
+    pool.query('SELECT * FROM sinhvien as sv , sinhvien_lop as svl , lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE l.bmcn_ma=bmcn.bmcn_ma and bmcn.k_ma=k.k_ma and bmcn.bmcn_xoa=0 and k.k_xoa=0 and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and sv.sv_xoa=0 and svl.svl_xoa=0 ', (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+module.exports.getSinhVienListKhoa = function (k_ma, callback) {
+    pool.query('SELECT * FROM sinhvien as sv , sinhvien_lop as svl , lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE l.bmcn_ma=bmcn.bmcn_ma and bmcn.k_ma=k.k_ma and bmcn.bmcn_xoa=0 and k.k_xoa=0 and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and sv.sv_xoa=0 and k.k_ma=$1 and svl.svl_xoa=0 ', [k_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
+
+module.exports.getSinhVienListBMCN = function (bmcn_ma, callback) {
+    pool.query('SELECT * FROM sinhvien as sv , sinhvien_lop as svl , lop as l , bomon_chuyennganh as bmcn , khoa as k WHERE l.bmcn_ma=bmcn.bmcn_ma and bmcn.k_ma=k.k_ma and bmcn.bmcn_xoa=0 and k.k_xoa=0 and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and sv.sv_xoa=0 and bmcn.bmcn_ma=$1 and svl.svl_xoa=0 ', [bmcn_ma], (error, results) => {
         callback(error, results.rows);
     });
 };

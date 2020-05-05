@@ -118,6 +118,16 @@ router.route('/api/sinhvien')
     .post(sinhvienController.createSinhVien)
     .get(sinhvienController.getSinhVienList)
     .delete(sinhvienController.deleteSinhVien)
+	
+router.route('/api/sinhvien_all')
+	.get(sinhvienController.getSinhVienListAll)
+	
+router.route('/api/sinhvien_khoa')
+	.get(sinhvienController.getSinhVienListKhoa)
+	
+
+router.route('/api/sinhvien_bmcn')
+	.get(sinhvienController.getSinhVienListBMCN)
 
 router.route('/api/sinhvien_dangki')
     .get(sinhvienController.getSinhVienDangKiList)
