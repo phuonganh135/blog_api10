@@ -16,6 +16,20 @@ module.exports.getThoiGianList = function (req, res, next) {
     });
 };
 
+module.exports.getLoaiThoiGianList = function (req, res, next) {
+	var ltg_loaidetai = req.query.ltg_loaidetai;
+
+    dbQuries.getLoaiThoiGianList( ltg_loaidetai, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get loai thoigian!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 module.exports.createThoiGian = function (req, res, next) {
     var thoigianInfo = req.body;
