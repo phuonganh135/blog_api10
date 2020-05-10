@@ -16,6 +16,22 @@ module.exports.getThoiGianList = function (req, res, next) {
     });
 };
 
+
+module.exports.getThoiGianListAll = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+    var hk_ma = req.query.hk_ma;
+	var ltg_loaidetai = req.query.ltg_loaidetai;
+    dbQuries.getThoiGianListAll(nh_ma, hk_ma , ltg_loaidetai , function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get thoigian!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getLoaiThoiGianList = function (req, res, next) {
 	var ltg_loaidetai = req.query.ltg_loaidetai;
 
@@ -29,6 +45,8 @@ module.exports.getLoaiThoiGianList = function (req, res, next) {
         res.status(200).json(results);
     });
 };
+
+
 
 
 module.exports.createThoiGian = function (req, res, next) {

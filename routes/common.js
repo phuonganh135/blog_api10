@@ -58,6 +58,9 @@ router.route('/api/thoigian')
 	.put(thoigianController.updateThoiGianInfo)
 	.delete(thoigianController.deleteThoiGian)
 	
+router.route('/api/thoigian_all')
+    .get(thoigianController.getThoiGianListAll)
+	
 router.route('/api/loaithoigian')
     .get(thoigianController.getLoaiThoiGianList)
 	

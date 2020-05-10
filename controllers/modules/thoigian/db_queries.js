@@ -10,6 +10,13 @@ module.exports.getThoiGianList = function (nh_ma, hk_ma, k_ma, ltg_loaidetai,  c
     });
 };
 
+
+module.exports.getThoiGianListAll = function (nh_ma, hk_ma,  ltg_loaidetai,  callback) {
+    pool.query('SELECT * FROM khoa as k, thoigian_dk_bc as tgdkbc, loai_thoigian as ltg WHERE tgdkbc.k_ma=k.k_ma and k.k_xoa=0 and tgdkbc.ltg_ma = ltg.ltg_ma and tgdkbc.nh_ma = $1 and tgdkbc.hk_ma = $2 and tgdkbc.tg_xoa=0 and ltg.ltg_xoa=0 and ltg.ltg_loaidetai=$3', [nh_ma, hk_ma ,  ltg_loaidetai ], (error, results) => {
+        callback(error, results.rows);
+    });
+};
+
 module.exports.getLoaiThoiGianList = function ( ltg_loaidetai ,callback) {
     pool.query('SELECT * FROM loai_thoigian where ltg_xoa=0 and ltg_loaidetai=$1 ',[ltg_loaidetai],  (error, results) => {
         callback(error, results.rows);
