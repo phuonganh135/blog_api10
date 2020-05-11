@@ -204,6 +204,14 @@ router.route('/api/giangvien_huongdan')
 	.put(gvhuongdanController.updateGiangVienHuongDanInfo)
 	.delete(gvhuongdanController.deleteGiangVienHuongDan)
 	
+
+router.route('/api/giangvien_huongdan_allKhoa')
+	.get(gvhuongdanController.getGiangVienHuongDanListALLKhoa)
+	
+	
+router.route('/api/giangvien_huongdan_allBoMon')
+	.get(gvhuongdanController.getGiangVienHuongDanListAllBoMon)
+	
 router.route('/api/giangvien_huongdan_info')
 	.get(gvhuongdanController.getGiangVienHuongDanInfo)
 

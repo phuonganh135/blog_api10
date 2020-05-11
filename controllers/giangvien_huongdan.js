@@ -28,6 +28,37 @@ module.exports.getGiangVienHuongDanList = function (req, res, next) {
     });
 };
 
+module.exports.getGiangVienHuongDanListALLKhoa = function (req, res, next) {
+	var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+    dbQuries.getGiangVienHuongDanListALLKhoa( nh_ma,hk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get giangvien_huongdan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
+module.exports.getGiangVienHuongDanListAllBoMon = function (req, res, next) {
+	var k_ma = req.query.k_ma;
+	var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+    dbQuries.getGiangVienHuongDanListAllBoMon(k_ma , nh_ma,hk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get giangvien_huongdan list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getGiangVienHuongDanInfo = function (req, res, next) {
     var gv_ma = req.query.gv_ma
 	var nh_ma = req.query.nh_ma;
