@@ -34,7 +34,7 @@ module.exports.getGiangVienHuongDanListAllBoMon = function (k_ma , nh_ma,hk_ma,c
 
 
 module.exports.getGiangVienHuongDanInfo = function (gv_ma, nh_ma, hk_ma, callback) {
-    pool.query('SELECT * FROM gianvien_huongdan as gvhd, gianvien as gv WHERE gvhd.gv_ma = gv.gv_ma and gvhd.gvhd_xoa=0 and gv.gv_xoa=0 and gvhd.hk_ma=$3 and gvhd.nh_ma=$2 and gvhd.gv_ma=$1', [gv_ma, nh_ma, hk_ma], (error, results) => {
+    pool.query('SELECT * FROM gianvien_huongdan as gvhd, gianvien as gv , bomon_chuyennganh as bmcn, khoa as k WHERE gvhd.gv_ma = gv.gv_ma and gvhd.gvhd_xoa=0 and gv.gv_xoa=0 and gvhd.hk_ma=$3 and gvhd.nh_ma=$2 and gv.bmcn_ma=bmcn.bmcn_ma and bmcn.bmcn_xoa=0 and gv.gv_ma=$1 and bmcn.k_ma=k.k_ma and k.k_xoa=0  ', [gv_ma, nh_ma, hk_ma], (error, results) => {
         callback(error, results.rows);
     });
 };
