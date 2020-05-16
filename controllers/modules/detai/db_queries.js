@@ -28,7 +28,7 @@ async function getSinhVienDangKy(dt_ma) {
 async function getSinhVienChapNhan(dt_ma) {
     let response;
     try {
-        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ttdk_ma=\'cn\' GROUP BY dt_ma',[dt_ma]);
+        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ( ttdk_ma=\'cn\' or ttdk_ma=\'cnbc\' or ttdk_ma=\'tcbc\') GROUP BY dt_ma',[dt_ma]);
         if (response.rows.length == 0) return 0;
         return parseInt(response.rows[0].svdk);
     }
