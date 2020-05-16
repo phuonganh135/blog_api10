@@ -14,7 +14,21 @@ module.exports.createDeTai = function (detaiInfo, callback) {
 async function getSinhVienDangKy(dt_ma) {
     let response;
     try {
-        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ttdk_ma=\'yc\' GROUP BY sv_ma, dt_ma',[dt_ma]);
+        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ttdk_ma=\'yc\' GROUP BY dt_ma',[dt_ma]);
+        if (response.rows.length == 0) return 0;
+        return parseInt(response.rows[0].svdk);
+    }
+    catch (error) {
+        console.log(eror);
+    }
+    
+}
+
+
+async function getSinhVienChapNhan(dt_ma) {
+    let response;
+    try {
+        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ttdk_ma=\'cn\' GROUP BY dt_ma',[dt_ma]);
         if (response.rows.length == 0) return 0;
         return parseInt(response.rows[0].svdk);
     }
@@ -32,6 +46,7 @@ module.exports.getDeTaiList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -46,6 +61,7 @@ module.exports.getDeTaiNienLuanList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -60,6 +76,7 @@ module.exports.getDeTaiTieuLuanList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -75,6 +92,7 @@ module.exports.getDeTaiNienLuanCoSoList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -89,6 +107,7 @@ module.exports.getDeTaiLuanVanSVDXList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -103,6 +122,7 @@ module.exports.getDeTaiNienLuanSVDXList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -117,6 +137,7 @@ module.exports.getDeTaiTieuLuanSVDXList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -131,6 +152,7 @@ module.exports.getDeTaiNienLuanCoSoSVDXList = function (gv_ma, callback) {
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -179,6 +201,7 @@ module.exports.getDeTaiListOfAllGianVien = function (bmcn_ma, hk_ma , nh_ma, cal
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -193,6 +216,7 @@ module.exports.getDeTaiListOfAllGianVienUpdate = function (bmcn_ma, hk_ma , nh_m
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -207,6 +231,7 @@ module.exports.getDeTaiListOfOneGianVienUpdate = function (bmcn_ma, hk_ma , nh_m
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -221,6 +246,7 @@ module.exports.getDeTaiListOfAllGianVienTieuLuan = function (bmcn_ma, hk_ma , nh
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -235,6 +261,7 @@ module.exports.getDeTaiListOfAllGianVienNienLuan = function (bmcn_ma, hk_ma , nh
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -249,6 +276,7 @@ module.exports.getDeTaiListOfAllGianVienNienLuanCoSo = function (bmcn_ma, hk_ma 
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -263,6 +291,7 @@ module.exports.getDeTaiListOfOneGianVien = function (bmcn_ma, hk_ma , nh_ma,gv_m
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -277,6 +306,7 @@ module.exports.getDeTaiListOfOneGianVienTieuLuan = function (bmcn_ma, hk_ma , nh
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -291,6 +321,7 @@ module.exports.getDeTaiListOfOneGianVienNienLuan = function (bmcn_ma, hk_ma , nh
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);
@@ -305,6 +336,7 @@ module.exports.getDeTaiListOfOneGianVienNienLuanCoSo = function (bmcn_ma, hk_ma 
             var deTai = listDeTai[i];
             var dt_ma = deTai.dt_ma;
             deTai.svdk = await getSinhVienDangKy(dt_ma);
+			deTai.svcn= await getSinhVienChapNhan(dt_ma);
             listDeTai[i] = deTai;
         }
         callback(error, listDeTai);

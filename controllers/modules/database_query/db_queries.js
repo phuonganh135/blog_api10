@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM binhluan', (error, results) => {
+    pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=\'70\' and ttdk_ma=\'yc\' GROUP BY dt_ma', (error, results) => {
         callback(error, results.rows);
     });
 };
