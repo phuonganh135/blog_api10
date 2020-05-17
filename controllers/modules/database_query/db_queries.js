@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=\'70\' and ttdk_ma=\'yc\' GROUP BY dt_ma', (error, results) => {
+    pool.query('SELECT * FROM sinhvien_lop  ', (error, results) => {
         callback(error, results.rows);
     });
 };
@@ -19,7 +19,7 @@ module.exports.getDatabaseQuery = function ( callback) {
 
 module.exports.updateDatabaseQuery = function ( callback) {
 
-    pool.query('UPDATE khoa SET  k_xoa=0 WHERE k_ma=\'CNTT\'', (error, result) => {
+    pool.query('UPDATE sinhvien_dk_detai SET  svdkdt_xoa=1 WHERE sv_ma=\'B1507301\'', (error, result) => {
         callback(error, result);
     });
 };

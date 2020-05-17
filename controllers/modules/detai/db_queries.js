@@ -14,7 +14,7 @@ module.exports.createDeTai = function (detaiInfo, callback) {
 async function getSinhVienDangKy(dt_ma) {
     let response;
     try {
-        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ttdk_ma=\'yc\' GROUP BY dt_ma',[dt_ma]);
+        response = await pool.query('SELECT svdkdt.dt_ma, count(svdkdt.sv_ma) as svdk FROM sinhvien_dk_detai as svdkdt, sinhvien as sv WHERE svdkdt.sv_ma = sv.sv_ma and sv.sv_xoa=0 and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma=$1 and svdkdt.ttdk_ma=\'yc\' GROUP BY svdkdt.dt_ma ',[dt_ma]);
         if (response.rows.length == 0) return 0;
         return parseInt(response.rows[0].svdk);
     }
@@ -28,7 +28,7 @@ async function getSinhVienDangKy(dt_ma) {
 async function getSinhVienChapNhan(dt_ma) {
     let response;
     try {
-        response = await pool.query('SELECT dt_ma, count(sv_ma) as svdk FROM sinhvien_dk_detai WHERE dt_ma=$1 and ( ttdk_ma=\'cn\' or ttdk_ma=\'cnbc\' or ttdk_ma=\'tcbc\') GROUP BY dt_ma',[dt_ma]);
+        response = await pool.query('SELECT svdkdt.dt_ma, count(svdkdt.sv_ma) as svdk FROM sinhvien_dk_detai as svdkdt , sinhvien as sv WHERE svdkdt.sv_ma=sv.sv_ma and sv.sv_xoa=0 and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma=$1 and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') GROUP BY svdkdt.dt_ma ',[dt_ma]);
         if (response.rows.length == 0) return 0;
         return parseInt(response.rows[0].svdk);
     }
