@@ -168,6 +168,39 @@ router.route('/api/sinhvien_thuchien_nienluan_coso_all')
 router.route('/api/sinhvien_baocao')
     .get(sinhvienController.getSinhVienBaoCaoList)
 	
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKi)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_ttdk')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiTrangThaiDangKi)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_khoa')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiKhoa)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_bmcn')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiBMCN)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_lop')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiLop)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_gianvien')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiGianVien)
+	
+	
+	
+	router.route('/api/sinhvien_thongke_namhoc_hocki_khoa_ttdk')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiKhoaTTDK)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_bmcn_ttdk')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiBMCNTTDK)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_lop_ttdk')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiLopTTDK)
+	
+router.route('/api/sinhvien_thongke_namhoc_hocki_gianvien_ttdk')
+    .get(sinhvienController.getSinhVienThongKeListNamHocHocKiGianVienTTDK)
+	
 router.route('/api/sinhvien_baocao_nienluan')
     .get(sinhvienController.getSinhVienBaoCaoNienLuanList)
 	

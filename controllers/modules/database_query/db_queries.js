@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM sinhvien_lop  ', (error, results) => {
+    pool.query('SELECT * FROM sinhvien_dk_detai', (error, results) => {
         callback(error, results.rows);
     });
 };
@@ -19,7 +19,7 @@ module.exports.getDatabaseQuery = function ( callback) {
 
 module.exports.updateDatabaseQuery = function ( callback) {
 
-    pool.query('UPDATE sinhvien_dk_detai SET  svdkdt_xoa=1 WHERE sv_ma=\'B1507301\'', (error, result) => {
+    pool.query('UPDATE binhluan SET  nguoibl_ma=\'B1507299\' , nguoibl_ten=\'Nguyen Thi Phuong Anh\' WHERE dt_ma=\'7\'', (error, result) => {
         callback(error, result);
     });
 };

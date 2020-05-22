@@ -245,6 +245,173 @@ module.exports.getSinhVienBaoCaoList = function (req, res, next) {
     });
 };
 
+
+module.exports.getSinhVienThongKeListNamHocHocKi = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKi(nh_ma, hk_ma,ldt_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiKhoa = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var k_ma = req.query.k_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiKhoa(nh_ma, hk_ma,ldt_ma, k_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiBMCN = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var bmcn_ma = req.query.bmcn_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiBMCN(nh_ma, hk_ma,ldt_ma,bmcn_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiLop = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var l_ma = req.query.l_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiLop(nh_ma, hk_ma,ldt_ma, l_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiGianVien = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var gv_ma = req.query.gv_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiGianVien(nh_ma, hk_ma,ldt_ma, gv_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
+
+module.exports.getSinhVienThongKeListNamHocHocKiKhoaTTDK = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var k_ma = req.query.k_ma;
+	var ttdk_ma = req.query.ttdk_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiKhoaTTDK(nh_ma, hk_ma,ldt_ma, k_ma,ttdk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiBMCNTTDK = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var bmcn_ma = req.query.bmcn_ma;
+	var ttdk_ma = req.query.ttdk_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiBMCNTTDK(nh_ma, hk_ma,ldt_ma,bmcn_ma, ttdk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiLopTTDK = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var l_ma = req.query.l_ma;
+	var ttdk_ma = req.query.ttdk_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiLopTTDK(nh_ma, hk_ma,ldt_ma, l_ma, ttdk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiGianVienTTDK = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var gv_ma = req.query.gv_ma;
+	var ttdk_ma = req.query.ttdk_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiGianVienTTDK(nh_ma, hk_ma,ldt_ma, gv_ma,ttdk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+module.exports.getSinhVienThongKeListNamHocHocKiTrangThaiDangKi = function (req, res, next) {
+    var nh_ma = req.query.nh_ma;
+	var hk_ma = req.query.hk_ma;
+	var ldt_ma = req.query.ldt_ma;
+	var ttdk_ma = req.query.ttdk_ma;
+    dbQuries.getSinhVienThongKeListNamHocHocKiTrangThaiDangKi(nh_ma, hk_ma,ldt_ma,ttdk_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thong ke nam hoc hoc ki list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 module.exports.getSinhVienBaoCaoNienLuanList = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
     dbQuries.getSinhVienBaoCaoNienLuanList(gv_ma, function(error, results) {
