@@ -6,7 +6,7 @@ const pool = new Pool(dbConfig);
 module.exports.createGiangVienHuongDan = function (gvhuongdanInfo, callback) {
     const { gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs } = gvhuongdanInfo;
 
-    pool.query('INSERT INTO gianvien_huongdan (gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma, ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs) VALUES ($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 )', [gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs], (error, result) => {
+    pool.query('INSERT INTO gianvien_huongdan (gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma, gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs) VALUES ($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 )', [gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs], (error, result) => {
         callback(error, result);
     });
 };
