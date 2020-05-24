@@ -4,9 +4,9 @@ var dbConfig = require('../../db_config.json');
 const pool = new Pool(dbConfig);
 
 module.exports.createGiangVienHuongDan = function (gvhuongdanInfo, callback) {
-    const { gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma } = gvhuongdanInfo;
+    const { gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs } = gvhuongdanInfo;
 
-    pool.query('INSERT INTO gianvien_huongdan (gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma) VALUES ($1, $2, $3, $4, $5)', [gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma], (error, result) => {
+    pool.query('INSERT INTO gianvien_huongdan (gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma, ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs) VALUES ($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 )', [gvhd_soluong, gvhd_xoa, gv_ma, hk_ma, nh_ma ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs], (error, result) => {
         callback(error, result);
     });
 };
@@ -41,9 +41,9 @@ module.exports.getGiangVienHuongDanInfo = function (gv_ma, nh_ma, hk_ma, callbac
 
 
 module.exports.updateGiangVienHuongDanInfo = function (gv_ma, nh_ma,hk_ma,  gvhuongdanInfo, callback) {
-    const { gvhd_soluong } = gvhuongdanInfo;
+    const { gvhd_soluong ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs } = gvhuongdanInfo;
 
-    pool.query('UPDATE gianvien_huongdan set gvhd_soluong=$4 WHERE gv_ma=$1 and nh_ma=$2 and hk_ma=$3 ', [gv_ma, nh_ma,hk_ma,gvhd_soluong], (error, result) => {
+    pool.query('UPDATE gianvien_huongdan set gvhd_soluong=$4 , gvhd_soluong_tl=$5, gvhd_soluong_nl=$6, gvhd_soluong_nlcs=$7 WHERE gv_ma=$1 and nh_ma=$2 and hk_ma=$3 ', [gv_ma, nh_ma,hk_ma,gvhd_soluong ,gvhd_soluong_tl ,gvhd_soluong_nl ,gvhd_soluong_nlcs], (error, result) => {
         callback(error, result);
     });
 };
