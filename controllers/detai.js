@@ -533,6 +533,23 @@ module.exports.getDeTaiInfoSVChapNhan = function (req, res, next) {
 
 
 
+module.exports.getDeTaiListChapNhanCheckIsRegister = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+	var ldt_ma = req.query.ldt_ma;
+
+    dbQuries.getDeTaiListChapNhanCheckIsRegister(sv_ma,ldt_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list sinh vien chap nhan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
 module.exports.getDeTaiListChapNhan = function (req, res, next) {
     var sv_ma = req.query.sv_ma;
 
