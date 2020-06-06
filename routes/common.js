@@ -35,6 +35,7 @@ router.route('/api/database_query')
     .get(databaseController.getDatabaseQuery)
 	.put(databaseController.updateDatabaseQuery)
 	.post(databaseController.craeteDatabaseQuery)
+	.delete(databaseController.deleteDatabaseQuery)
 	
 
 router.route('/api/khoa')
@@ -251,6 +252,9 @@ router.route('/api/giangvien_huongdan_info')
 router.route('/api/detai')
     .post(detaiController.createDeTai)
     .get(detaiController.getDeTaiList)
+	
+router.route('/api/detai_tongsoluong')
+	.get(detaiController.getDeTaiListTongSoLuong)
 	
 router.route('/api/detai_nienluan')
     .get(detaiController.getDeTaiNienLuanList)

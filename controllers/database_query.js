@@ -41,3 +41,18 @@ module.exports.craeteDatabaseQuery = function (req, res, next) {
         res.status(201).send("Detai is added successfully!");
     });
 };
+
+
+
+module.exports.deleteDatabaseQuery = function (req, res, next) {
+    
+    dbQuries.deleteDatabaseQuery( function(error, result) {
+        if (error) {
+            res.status(501).json({
+                message: "Error delete sinhvien " ,
+                error: error
+            });
+        }
+        res.status(200).json("delete Sinhvien  successfully");
+    });
+};

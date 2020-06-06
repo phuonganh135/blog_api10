@@ -11,7 +11,7 @@ const pool = new Pool(dbConfig);
 
 
 module.exports.getDatabaseQuery = function ( callback) {
-    pool.query('SELECT * FROM sinhvien_dk_detai', (error, results) => {
+    pool.query('SELECT * FROM khoa', (error, results) => {
         callback(error, results.rows);
     });
 };
@@ -26,7 +26,17 @@ module.exports.updateDatabaseQuery = function ( callback) {
 
 module.exports.craeteDatabaseQuery = function ( callback) {
 
-    pool.query('INSERT INTO loai_thoigian  VALUES (8,\'Báo cáo niên luận cơ sở\',\'nlcs\',0)', (error, result) => {
+    pool.query('INSERT INTO namhoc  VALUES (\'2019-2020\',0)', (error, result) => {
         callback(error, result);
+    });
+};
+
+
+module.exports.deleteDatabaseQuery = function ( callback) {
+    pool.query('DELETE FROM khoa ', (error, result) => {
+        callback(error, result);
+
+        
+        
     });
 };
