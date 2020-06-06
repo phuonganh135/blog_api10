@@ -31,7 +31,8 @@ module.exports.getDeTaiList = function (req, res, next) {
 
 module.exports.getDeTaiListTongSoLuong = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
-    dbQuries.getDeTaiListTongSoLuong(gv_ma, function(error, results) {
+	var ldt_ma = req.query.ldt_ma;
+    dbQuries.getDeTaiListTongSoLuong(gv_ma,ldt_ma, function(error, results) {
         if (error) {
             res.status(501).json({
                 message: "Error get detai list!",

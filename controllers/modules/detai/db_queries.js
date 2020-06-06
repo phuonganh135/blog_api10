@@ -55,8 +55,8 @@ module.exports.getDeTaiList = function (gv_ma, callback) {
 
 
 
-module.exports.getDeTaiListTongSoLuong = function (gv_ma, callback) {
-    pool.query('SELECT sum(dt_soluong) as tongsoluong FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'dtgv\' and ldt_ma=\'lv\'',[gv_ma], async function (error, results) {
+module.exports.getDeTaiListTongSoLuong = function (gv_ma, ldt_ma, callback) {
+    pool.query('SELECT sum(dt_soluong) as tong_soluong FROM detai WHERE gv_ma = $1 and dt_xoa = 0 and dt_trangthai=\'dtgv\' and ldt_ma=$2',[gv_ma , ldt_ma], async function (error, results) {
         var listDeTai = results.rows;
         // var listResult = results.rows;
         for (var i = 0; i < listDeTai.length; i++) {
