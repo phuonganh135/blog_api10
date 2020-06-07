@@ -153,6 +153,9 @@ router.route('/api/sinhvien_thuchien_tieuluan')
 router.route('/api/sinhvien_thuchien_nienluan_coso')
     .get(sinhvienController.getSinhVienThucHienNienLuanCoSoList)
 	
+router.route('/api/sinhvien_thuchien_all_soluong')
+    .get(sinhvienController.getSinhVienThucHienListAllSoLuong)
+	
 router.route('/api/sinhvien_thuchien_all')
     .get(sinhvienController.getSinhVienThucHienListAll)
 	

@@ -116,6 +116,11 @@ module.exports.getSinhVienThucHienNienLuanCoSoList = function (gv_ma ,callback) 
     });
 };
 
+module.exports.getSinhVienThucHienListAllSoLuong = function (gv_ma , ldt_ma ,callback) {
+    pool.query('SELECT count(sv.sv_ma)  as soluong_thuchien FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=$2 and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma, ldt_ma], (error, results) => {
+        callback(error, results.rows);
+    });
+};
 
 module.exports.getSinhVienThucHienListAll = function (gv_ma ,callback) {
     pool.query('SELECT * FROM sinhvien_lop as svl , lop as l, bomon_chuyennganh as bmcn , khoa as k, sinhvien_dk_detai as svdkdt , sinhvien as sv , detai as dt , trangthai_dangki as ttdk WHERE l.bmcn_ma = bmcn.bmcn_ma and bmcn.k_ma = k.k_ma and sv.sv_ma = svl.sv_ma and l.l_ma = svl.l_ma and svdkdt.ttdk_ma = ttdk.ttdk_ma and ( svdkdt.ttdk_ma=\'cn\' or svdkdt.ttdk_ma=\'cnbc\' or svdkdt.ttdk_ma=\'tcbc\') and svdkdt.sv_ma = sv.sv_ma and dt.gv_ma=$1 and dt.ldt_ma=\'lv\' and svdkdt.svdkdt_xoa=0 and svdkdt.dt_ma = dt.dt_ma and dt.dt_xoa=0 and sv.sv_xoa=0', [gv_ma], (error, results) => {

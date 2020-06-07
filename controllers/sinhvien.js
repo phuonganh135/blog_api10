@@ -178,6 +178,20 @@ module.exports.getSinhVienThucHienNienLuanCoSoList = function (req, res, next) {
 };
 
 
+module.exports.getSinhVienThucHienListAllSoLuong = function (req, res, next) {
+    var gv_ma = req.query.gv_ma;
+	var ldt_ma = req.query.ldt_ma;
+    dbQuries.getSinhVienThucHienListAllSoLuong(gv_ma,ldt_ma, function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get sinhvien thuchien list!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
 
 module.exports.getSinhVienThucHienListAll = function (req, res, next) {
     var gv_ma = req.query.gv_ma;
