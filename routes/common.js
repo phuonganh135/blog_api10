@@ -352,6 +352,9 @@ router.route('/api/detai_sinhvien_chapnhan_check_isregister')
 router.route('/api/detai_sinhvien_chapnhan')
     .get(detaiController.getDeTaiListChapNhan)
 	
+router.route('/api/detai_sinhvien_tuchoi')
+    .get(detaiController.getDeTaiListTuChoi)
+	
 router.route('/api/detai_sinhvien_chapnhan_tieuluan')
     .get(detaiController.getDeTaiListChapNhanTieuLuan)
 	

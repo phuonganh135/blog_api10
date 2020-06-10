@@ -581,6 +581,21 @@ module.exports.getDeTaiListChapNhan = function (req, res, next) {
 };
 
 
+module.exports.getDeTaiListTuChoi = function (req, res, next) {
+    var sv_ma = req.query.sv_ma;
+
+    dbQuries.getDeTaiListTuChoi(sv_ma,  function(error, results) {
+        if (error) {
+            res.status(501).json({
+                message: "Error get detai list sinh vien chap nhan!",
+                error: error
+            });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
 module.exports.getDeTaiListChapNhanTieuLuan = function (req, res, next) {
     var sv_ma = req.query.sv_ma;
 
